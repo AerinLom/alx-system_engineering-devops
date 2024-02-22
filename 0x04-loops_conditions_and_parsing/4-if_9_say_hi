@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Displays "Best School" but on 9th time "Best School" and then "Hi"
+loop_iter=0
+while [ $loop_iter != 10 ]
+do
+   if [ $loop_iter == 8 ]
+   then
+      echo -e "Best School\nHi"
+   else
+      echo "Best School"
+   fi
+   loop_iter=$(( loop_iter + 1 ))
+done
