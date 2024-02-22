@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Displays numbers from 1 to 100 with some exceptions
+for (( num_count=1; num_count<=100; num_count++ ))
+do
+   if ((num_count % 3 == 0 )) && (( num_count % 5 == 0 ))
+   then
+      echo "FizzBuzz"
+   elif (( num_count % 3 == 0 )) && (( num_count % 5 != 0 ))
+   then
+      echo "Fizz"
+   elif (( num_count % 3 != 0 )) && (( num_count % 5 == 0 ))
+   then
+      echo "Buzz"
+   else
+      echo "$num_count"
+   fi
+done
