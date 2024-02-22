@@ -3,6 +3,6 @@
 loop_count=0
 until [ $loop_count == 10 ]
 do
-echo "Best School"
-loop_count=$(( loop_count + 1 ))
+   echo "Best School"
+   loop_count=$(( loop_count + 1 ))
 done
