@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Content in directory, only part of name after the first dash is displayed
+list_files=$(ls)
+for files in $list_files
+do
+   if [[ ! $files == .* && -f $files ]]
+   then
+          echo "$files" | cut -d '-' -f 2-
+   fi
+done
