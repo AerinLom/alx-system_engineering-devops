@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Displays the time
+hour_num=0
+while (( hour_num < 13 ))
+do
+   minute_num=1
+   echo "Hour: $hour_num"
+   while (( minute_num < 60 ))
+   do
+      echo "$minute_num"
+      minute_num=$(( minute_num + 1 ))
+   done
+   hour_num=$(( hour_num + 1 ))
+done
