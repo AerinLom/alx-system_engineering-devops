@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Bash script to display numbers from 1 to 20 with specific conditions
+loop_num=1
+while [ $loop_num != 21 ]
+do
+    case $loop_num in
+        4)
+            echo -e "4\nbad luck from China"
+            ;;
+        9)
+            echo -e "9\nbad luck from Japan"
+            ;;
+        17)
+            echo -e "17\nbad luck from Italy"
+            ;;
+        *)
+            echo $loop_num
+            ;;
+    esac
+    loop_num=$(( loop_num + 1 ))
+done

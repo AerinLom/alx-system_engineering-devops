@@ -4,5 +4,5 @@ loop_count=0
 while [ $loop_count != 10 ]
 do
    echo "Best School"
-   loop_count=$(( $loop_count + 1 ))
+   loop_count=$(( loop_count + 1 ))
 done
