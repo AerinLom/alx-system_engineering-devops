@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Configures IP addresses on an Ubuntu server
+
+cp /etc/hosts ~/hosts.newip
+
+echo "127.0.0.2		localhost" > ~/hosts.newip
+echo "8.8.8.8		facebook.com" >> ~/hosts.newip
+cp -f ~/hosts.newip /etc/hosts
