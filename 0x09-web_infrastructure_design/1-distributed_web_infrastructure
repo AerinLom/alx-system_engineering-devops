@@ -1,1 +1,55 @@
+Link to diagram:
+================
 https://imgur.com/a/I8MnhNw
+
+
+Additional Elements and Their Purpose:
+======================================
+
+2 Servers (Server 2 & 3):
+-------------------------
+To host additional application instances and act as replica database servers in case of failure.
+
+Load Balancer (HAProxy):
+------------------------
+To distribute incoming traffic across multiple application servers for better performance and failure precautions.
+
+
+Specifics of what was added:
+============================
+
+Load Balancer Distribution Algorithm:
+-------------------------------------
+Configured with a round-robin distribution algorithm.
+This algorithm evenly distributes incoming requests among the available application servers in a sequential manner.
+
+Active-Active vs. Active-Passive Setup:
+---------------------------------------
+We are using an active-active setup to allow for load balancing between all possible servers.
+Active-Active Setup: Both application servers are actively serving traffic simultaneously, providing load balancing and redundancy.
+Active-Passive Setup: One application server is actively serving traffic while the other acts as a standby, ready to take over in case of failure.
+
+Database Primary-Replica Cluster:
+---------------------------------
+Involves two database nodes: Primary (Master) and Replica (Slave).
+Primary node handles read-write operations, while the Replica node duplicates data from the Primary node
+and serves read-only operations (synchronisation of data).
+Data duplication ensures data redundancy and failure security.
+
+
+Issues with the Infrastructure:
+===============================
+
+Single Points of Failure (SPOFs):
+---------------------------------
+Load Balancer represents a single point of failure.
+Lack of redundancy with the Load Balancer could mean server downtime if it fails.
+
+Security Issues:
+----------------
+Absence of a firewall in the infrastructure allows for potential security threats.
+Lack of HTTPS encryption leaves data transmitted between the server and users vulnerable to malicious attacks.
+
+Lack of Monitoring:
+-------------------
+No monitoring capabilities mean that server performance can not be analysed and therefore making improvements are not possible.
