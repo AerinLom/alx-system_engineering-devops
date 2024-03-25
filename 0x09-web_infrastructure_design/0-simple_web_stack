@@ -1,1 +1,58 @@
+Link to diagram:
+================
 https://imgur.com/cdvwPq0
+
+
+Components and specifics of the Infrastructure:
+===============================================
+
+Server:
+-------
+A physical or virtual machine that hosts an infrastructure or an operating system, usually located in a data center.
+
+Web Server (Nginx):
+-------------------
+Nginx serves as the web server in this case and it handles web pages (static content)
+
+Application Server:
+-------------------
+This handles web requests dynamically running application codebases, and generating dynamic content.
+
+Application Files (Codebase):
+-----------------------------
+The website's codebase, containing all necessary files and scripts needed to execute your web application.
+
+Database (MySQL):
+-----------------
+MySQL serves as the relational database management system, storing the website's data.
+
+Role of the Domain Name:
+------------------------
+The domain name (e.g., "foobar.com") provides a human-readable address for accessing the website, which is easier to remember than an IP address.
+
+Type of DNS Record for www.foobar.com:
+--------------------------------------
+The DNS record "www" in "www.foobar.com" is a CNAME record, which points to the domain name: foobar.com with the IP (8.8.8.8)
+
+Communication with User's Computer:
+-----------------------------------
+The server communicates with the user's computer over the Internet using the HTTP protocol.
+The user's browser sends an HTTP request to the server, which responds with the requested web content
+
+
+Issues with the Infrastructure:
+===============================
+
+Single Point of Failure (SPOF):
+-------------------------------
+Since all components are hosted on a single server, any failure in the hardware or software of that server could lead to the entire website crashing.
+There is no back up components in case of failure.
+
+Downtime During Maintenance:
+----------------------------
+When performing maintenance tasks like deploying new code, the web server needs to be restarted, causing downtime during the restart process.
+
+Inability to Scale Under Heavy Traffic:
+---------------------------------------
+With only one server handling all requests, the infrastructure may struggle to handle a sudden increase in traffic, leading to slow response times or even downtime.
+Scaling is not possible on this infrastructure and if the server capacity is reached, the server may crash
