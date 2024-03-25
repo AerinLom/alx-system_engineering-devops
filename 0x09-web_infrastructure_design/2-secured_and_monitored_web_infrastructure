@@ -1,1 +1,59 @@
+Link to diagram:
+================
+
 https://imgur.com/6kAPeJh
+
+
+Additional Elements:
+====================
+
+Firewalls:
+----------
+Each server will have a firewall to control incoming and outgoing traffic.
+This adds an additional layer of security to the infrastructure.
+
+SSL Certificate:
+----------------
+A valid SSL certificate will be installed on the Load Balancer to serve www.foobar.com over HTTPS.
+This allows for secure encrypted communication between clients and the website, protecting sensitive data from interception and tampering.
+
+Monitoring Clients (Data Collectors):
+-------------------------------------
+Each server will have a monitoring client, which collects performance metrics, and other valuable data and sends it to a monitoring service like Sumo Logic.
+This allows real-time monitoring and alerts for system health and performance issues.
+
+Traffic Served Over HTTPS:
+--------------------------
+HTTPS encrypts the data transmitted between the client's browser and the web server, ensuring confidentiality and improved security.
+It prevents eavesdropping and data tampering, as well as other malicious attacks.
+
+Monitoring Purpose:
+-------------------
+Monitoring is used to track the performance of the infrastructure in real-time.
+It helps detect and resolve issues, maintaining optimal performance.
+
+Monitoring Web Server QPS:
+--------------------------
+To monitor the web server's Query Per Second (QPS), you can configure the monitoring tool to track the number of  requests received by the web server over a specific time period.
+If the QPS is too high an alert can be raised.
+
+
+Issues with the Infrastructure:
+===============================
+
+Terminating SSL at Load Balancer Level:
+---------------------------------------
+Terminating SSL at the load balance, leaves traffic unencrypted between the load balancer and the servers.
+This creates security risks if the internal network is exposed.
+
+Single MySQL Server Accepting Writes:
+-------------------------------------
+Having only one MySQL server capable of accepting writes represents a single point of failure. If this server fails, the application can not write to the database and will cause database inaccuracy.
+
+Identical Servers with Same Components:
+---------------------------------------
+Having servers with identical components can create downtime if there's an issue affecting one type of component, as it could affect all servers simultaneously
+
+SPOF with the load balancer:
+----------------------------
+Only having 1 load balancer means that if it somehow fails, the whole infrastructure will lose functionality.
