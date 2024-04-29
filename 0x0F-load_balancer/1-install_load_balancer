@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Installs and configures HAproxy and distributes traffic between web-01 and web-02
+# using round robin algorithm
+
+# Install HAProxy
+sudo apt update
+sudo apt install -y haproxy
+
+# Enable HAProxy management via the init script
+sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+
+# Configure HAProxy
+sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<'EOT'
+global
+    log /dev/log    local0
+    log /dev/log    local1 notice
+    daemon
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+
+frontend al-code.tech
+    bind *:80
+    default_backend al-code.tech_backend
+
+backend al-code.tech_backend
+    balance roundrobin
+    server web-01 34.207.211.211:80 check
+    server web-02 54.161.236.197:80 check
+
+EOT
+
+# Restart HAProxy
+sudo service haproxy restart
