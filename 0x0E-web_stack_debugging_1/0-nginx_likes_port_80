@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 # This script configures Nginx to listen on port 80 for all active IPv4 IPs
 
-# Check if Nginx is installed
-if ! command -v nginx &> /dev/null; then
-    echo "Nginx is not installed. Installing..."
-    sudo apt update
-    sudo apt install nginx
-fi
-
-# Check Nginx's configuration for port 80
-sudo sed -i 's/listen 80 default_server;/listen 80 default_server ipv4only=on;/g' /etc/nginx/sites-available/default
+apt-get update
+apt-get -y install curl
+rm /etc/nginx/sites-available/*
+rm /etc/nginx/sites-enabled/*~
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo service nginx restart
