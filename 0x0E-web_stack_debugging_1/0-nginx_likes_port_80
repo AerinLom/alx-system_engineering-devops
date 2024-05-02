@@ -9,6 +9,5 @@ if ! command -v nginx &> /dev/null; then
 fi
 
 # Check Nginx's configuration for port 80
-rm etc/nginx/sites-enabled/default
-ln -s etc/nginx/sites-available/default etc/nginx/sites-enabled/default
-sudo service nginx restart
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx start
