@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 # This script changes the nginx config files to listen on port 80
 
-# Check if Nginx is installed
-if ! command -v nginx &> /dev/null; then
-    echo "Nginx is not installed. Installing..."
-    sudo apt update
-    sudo apt install nginx
-fi
-
 # Check Nginx's configuration for port 80
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx start
