@@ -9,5 +9,7 @@ if ! command -v nginx &> /dev/null; then
 fi
 
 # Check Nginx's configuration for port 80
-sudo sed -i 's/listen 80 default_server;/listen 80 default_server ipv4only=on;/g' /etc/nginx/sites-available/default
+rm /etc/nginx/sites-available/*
+rm /etc/nginx/sites-enabled/*~
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 sudo service nginx restart
