@@ -1,0 +1,19 @@
+echo "Updating packages..."
+sudo apt-get update
+
+echo "Installing Firewall..."
+sudo apt-get install -y ufw
+
+echo "Configuring default policies..."
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+echo "Allowing incoming traffic on ports 22 (SSH), 443 (HTTPS), and 80 (HTTP)..."
+sudo ufw allow 22/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 80/tcp
+
+echo "Enabling ufw..."
+sudo ufw enable
+
+echo "Firewall installed and running"
