@@ -38,7 +38,7 @@ def get_progress(employee_id):
             "completed": task.get("completed"),
             "username": employee_name
         })
-    
+
     tasks = {str(employee_id): todo_list}
     json_filename = f"{employee_id}.json"
     with open(json_filename, mode='w') as jsonfile:
