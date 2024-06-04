@@ -11,11 +11,9 @@ def number_of_subscribers(subreddit):
 
     api_url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {"User-Agent": "Python Reddit Subscriber checker"}
-    response = requests.get(api_url, allow_redirects=False, headers=headers)
-
-    if response.status_code == 200:
-        data = response.json()
-        subreddit_subscribers = data['data']['subscribers']
-        return subreddit_subscribers
-    else:
+    response = requests.get(api_url, headers=headers, allow_redirects=False)
+    return response.json().get("data")
+    if response.status_code == 404:
         return 0
+    results = response.json().get("data")
+    return results.get("subscribers")
